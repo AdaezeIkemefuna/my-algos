@@ -335,3 +335,33 @@ function countingSort(array) {
 }
 // console.log(countingSort([1, 2, 3, 3, 4]));
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+function pangram(str) {
+  const formattedStr = str.toLowerCase().replace(/[^a-z0-9]/g, '');
+  const strChars = [];
+  for (let i = 0; i < formattedStr.length; i++) {
+    strChars.push(formattedStr[i].charCodeAt(0));
+  }
+
+  for (let i = 97; i <= 122; i++) {
+    if (strChars.includes(i)) continue;
+    else return 'not pangram';
+  }
+
+  return 'pangram';
+}
+
+// console.log(pangram('The quick brown fox jumps over the lazy dog'));
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+function marsExploration(s) {
+  const splitString = s.match(/.{1,3}/g) || [];
+  let result = 0;
+  for (const message of splitString) {
+    if (message[0] !== 'S') result++;
+    if (message[1] !== 'O') result++;
+    if (message[2] !== 'S') result++;
+  }
+  return result;
+}
+
+//console.log(marsExploration('SOSOOSOSOSOSOSSOSOSOSOSOSOS'));
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////
